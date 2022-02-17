@@ -3,7 +3,6 @@ FROM composer:2.1.14 AS composer
 COPY composer.json /app
 COPY composer.lock /app
 
-
 RUN composer install         \
     --ignore-platform-reqs  \
     --no-ansi               \
@@ -15,7 +14,6 @@ COPY . /app/
 RUN composer dump-autoload --optimize --classmap-authoritative
 
 FROM php:8.0.2-fpm-alpine
-
 RUN apk update && apk add --no-cache \
     libpng-dev                       \
     freetype-dev                     \
